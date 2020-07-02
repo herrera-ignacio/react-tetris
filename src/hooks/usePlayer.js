@@ -10,6 +10,7 @@ export const usePlayer = () => {
 	})
 
 	const updatePlayerPos = ({ x, y, collided }) => {
+		console.log(x);
 		setPlayer(prev => ({
 			...prev,
 			pos: { x: (prev.pos.x += x), y: (prev.pos.y += y) },
@@ -24,6 +25,7 @@ export const usePlayer = () => {
 			collided: false
 		})
 	}, [])
+
 
 	return [player, updatePlayerPos, resetPlayer]
 }
