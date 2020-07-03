@@ -25,10 +25,18 @@ export const usePlayer = () => {
 		// handle collisions on rotation
 		const posX = clonedPlayer.pos.x
 		let offset = 1
-		// While there's collision, move position using offset
+		// If there's no collision at all, continue and setPlayer
+		// While there's collision, move player position using horizontal offset
 		while(checkCollision(clonedPlayer, stage, { x: 0, y: 0 })) {
+			// if we can avoid collision by moving with offset, setPlayer with new pos
 			clonedPlayer.pos.x += offset
+			// 1. offset = 1, check 1 to right from start
+			// 2. offset = -2, check 1 to left from start
+			// 3. offset = 3, check 2 to right from start
 			offset = -(offset + (offset > 0 ? 1 : - 1))
+			console.log(offset)
+			// if horizontal offset is higher than tetromino horizontal length
+			// transpose tetromino in place
 			if (offset > clonedPlayer.tetromino[0].length) {
 				rotate(clonedPlayer.tetromino, -dir)
 				clonedPlayer.pos.x = posX
