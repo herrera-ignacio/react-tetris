@@ -34,7 +34,6 @@ export const usePlayer = () => {
 			// 2. offset = -2, check 1 to left from start
 			// 3. offset = 3, check 2 to right from start
 			offset = -(offset + (offset > 0 ? 1 : - 1))
-			console.log(offset)
 			// if horizontal offset is higher than tetromino horizontal length
 			// transpose tetromino in place
 			if (offset > clonedPlayer.tetromino[0].length) {
